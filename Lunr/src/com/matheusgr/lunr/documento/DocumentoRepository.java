@@ -1,13 +1,14 @@
 package com.matheusgr.lunr.documento;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
+
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
+
 
 /**
  * Repositório de documentos. O repositório pode ter opreações simples de busca,
@@ -80,8 +81,24 @@ class DocumentoRepository {
 	 * @return Conjunto de documentos com o termo.
 	 */
 	public Set<Documento> busca(String termo) {
-		return this.documentos.stream().filter((x) -> Arrays.binarySearch(x.getTexto(), termo) > 0)
-				.collect(Collectors.toSet());
-	}
 
+		Set<Documento> listaBuscar = new HashSet<>();
+
+		Set<String> chaves = documentos.keySet();
+		for (String chave : chaves) {
+			if (chave != null) {
+
+				for (int i = 0; i < this.documentos.size(); i++) {
+					String[] texto = documentos.get(chave).getTexto();
+					if (Arrays.stream(texto).anyMatch(termo::equals)) {
+						listaBuscar.add(documentos.get(chave));
+					}
+
+				}
+			}
+
+		}
+
+		return listaBuscar;
+	}
 }
