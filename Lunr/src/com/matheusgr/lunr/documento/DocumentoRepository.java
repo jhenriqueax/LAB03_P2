@@ -2,7 +2,9 @@ package com.matheusgr.lunr.documento;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -15,14 +17,14 @@ import java.util.stream.Collectors;
  */
 class DocumentoRepository {
 
-	private List<Documento> documentos;
+	private Map<String, Documento> documentos;
 	private ValidadorDocumentos validador;
 
 	/**
 	 * Construção padrão do repositório de documentos.
 	 */
 	DocumentoRepository() {
-		this.documentos = new ArrayList<>();
+		this.documentos = new HashMap<String, Documento>();
 		this.validador = new ValidadorDocumentos();
 	}
 
@@ -30,11 +32,11 @@ class DocumentoRepository {
 	 * Adiciona o documento. O documento é validado para garantir a consistência do
 	 * documento (sem termos e id vazios).
 	 * 
-	 * @param d Documento a ser adicionado.
+	 * @param documentos Documento a ser adicionado.
 	 */
-	void adiciona(Documento d) {
-		this.validador.validacao(d.getId(), d.getTexto());
-		this.documentos.add(d);
+	void adiciona(Documento documentos) {
+		this.validador.validacao(documentos.getId(), documentos.getTexto());
+		this.documentos.put(documentos.getId(), documentos);
 	}
 
 	/**
@@ -46,13 +48,19 @@ class DocumentoRepository {
 	Optional<Documento> recupera(String id) {
 		Documento doc = null;
 		this.validador.validacao(id);
-		
-		for (int i = 0; i < this.documentos.size(); i++) {
-		      if (id == this.documentos.get(i).getId()) {
-		    	  doc = this.documentos.get(i);
-		      }
+
+		Set<String> chaves = documentos.keySet();
+		for (String chave : chaves) {
+			if (chave != null) {
+
+				for (int i = 0; i < this.documentos.size(); i++) {
+					if (id == this.documentos.get(chave).getId()) {
+
+						doc = this.documentos.get(chave);
+					}
+				}
+			}
 		}
-		
 		return Optional.ofNullable(doc);
 	}
 
@@ -66,15 +74,14 @@ class DocumentoRepository {
 	}
 
 	/**
-	 * Realiza uma busca pelos termos.
+	 * Realiza uma busca pelos termos .
 	 * 
 	 * @param termo Termo a ser buscado.
 	 * @return Conjunto de documentos com o termo.
 	 */
 	public Set<Documento> busca(String termo) {
-		return this.documentos.stream()
-					.filter((x) -> Arrays.binarySearch(x.getTexto(), termo) > 0)
-					.collect(Collectors.toSet());
+		return this.documentos.stream().filter((x) -> Arrays.binarySearch(x.getTexto(), termo) > 0)
+				.collect(Collectors.toSet());
 	}
 
 }
