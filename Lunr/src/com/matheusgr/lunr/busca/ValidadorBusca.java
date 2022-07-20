@@ -1,5 +1,6 @@
 package com.matheusgr.lunr.busca;
 
+import java.util.Map;
 import java.util.Objects;
 
 import com.matheusgr.lunr.ValidadorPadrao;
@@ -23,6 +24,16 @@ class ValidadorBusca extends ValidadorPadrao {
 			}
 		}
 		throw new IllegalArgumentException("Pelo menos um termo não deve ser vazio");
+	}
+	
+	public void valida(Map<String, String> termos) {
+		Objects.requireNonNull(termos, "Conteúdo não pode ser nulo");
+		for (String t : termos.values()) {
+			if (!t.isBlank()) {
+				return;
+			}
+		}
+		throw new IllegalArgumentException("Pelo menos um metadado não deve ser vazio");
 	}
 
 	/**

@@ -15,7 +15,7 @@ public class BuscaAvancada {
 	// a estrututa precisa ser do tipo chave valor, pensei em usar String[0] e
 	// String[1]
 
-	public BuscaAvancada(String[] termos) {
+	public BuscaAvancada(Map<String, String> metaDados) {
 		(new ValidadorBusca()).valida(termos);
 		this.termos.put(null, null);
 
@@ -23,7 +23,7 @@ public class BuscaAvancada {
 
 	public Map<Documento, Integer> Busca(Map<String, String> meta) {
 
-		// por que não posso instanciar com Documento aaaaaaaaa
+		// por que não posso instanciar com Documento
 
 		HashMap<String, Documento> documentos = new HashMap<String, Documento>();
 
