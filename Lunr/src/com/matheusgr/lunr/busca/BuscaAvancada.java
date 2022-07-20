@@ -23,7 +23,7 @@ public class BuscaAvancada {
 
 	public Map<Documento, Integer> Busca(Map<String, String> meta) {
 
-		// por que não posso instanciar com Documento
+		// por que não posso instanciar com Documento aaaaaaaaa
 
 		HashMap<String, Documento> documentos = new HashMap<String, Documento>();
 
