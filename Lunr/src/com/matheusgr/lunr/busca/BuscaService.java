@@ -49,6 +49,16 @@ public class BuscaService {
 		this.br.adicionaBusca(buscaSimples, documentos);
 		return documentos;
 	}
+	
+	
+	// tive que criar método nos buscarepository e no histórico busca 
+	public DocumentoDTO[] busca(BuscaAvancada buscaAvancada) {
+		Map<Documento, Integer> respostaDocumento = buscaAvancada.busca(this.ds);
+		DocumentoDTO[] documentos = ordena(respostaDocumento);
+		this.br.adicionaBusca(buscaAvancada, documentos);
+		return documentos;
+	}
+	
 
 	/*
 	 * Toda busca deve:

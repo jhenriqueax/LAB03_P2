@@ -7,6 +7,7 @@ package com.matheusgr.lunr.busca;
 public class HistoricoBusca {
 
 	private BuscaSimples busca;
+	private BuscaAvancada buscaAvancada;
 	private String[] documentosIds;
 
 	/**
@@ -18,6 +19,15 @@ public class HistoricoBusca {
 	 */
 	public HistoricoBusca(BuscaSimples busca, String[] documentosIds) {
 		this.busca = busca;
+		this.documentosIds = documentosIds;
+	}
+
+	
+	
+	//tive que criar esse método para usa-lo no meu Buscarepository que por sua vez usara no busca service
+	
+	public HistoricoBusca(BuscaAvancada busca, String[] documentosIds) {
+		this.buscaAvancada = busca;
 		this.documentosIds = documentosIds;
 	}
 

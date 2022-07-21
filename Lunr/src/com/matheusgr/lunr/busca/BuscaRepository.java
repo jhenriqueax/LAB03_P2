@@ -40,6 +40,16 @@ class BuscaRepository {
 		this.buscas.add(new HistoricoBusca(buscaSimples, ids));
 	}
 
+	
+	public void adicionaBusca(BuscaAvancada buscaAvancada, DocumentoDTO[] documentos) {
+		String[] ids = Stream.of(documentos)
+			.map(DocumentoDTO::getId)
+			.collect(Collectors.toList())
+			.toArray(new String[] {});
+		this.buscas.add(new HistoricoBusca(buscaAvancada, ids));
+	
+	}
+	
 	/**
 	 * Retorna um histórico de busca. O histórico é inserido na ordem em que as
 	 * buscas são realizadas, associados a posição da busca na lista de buscas.
