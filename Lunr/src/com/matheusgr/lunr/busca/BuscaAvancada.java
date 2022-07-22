@@ -8,7 +8,7 @@ import java.util.Map;
 import com.matheusgr.lunr.documento.Documento;
 import com.matheusgr.lunr.documento.DocumentoService;
 
-public class BuscaAvancada {
+public class BuscaAvancada implements Busca{
 
 	private Map<String, String> mapa;
 

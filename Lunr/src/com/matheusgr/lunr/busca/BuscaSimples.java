@@ -20,7 +20,7 @@ import com.matheusgr.lunr.documento.DocumentoService;
  * Os documentos que não tem nenhum dos termos pesquisados, não devem ser
  * retornados.
  */
-class BuscaSimples {
+class BuscaSimples implements Busca {
 
 	private String[] termos;
 
