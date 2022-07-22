@@ -6,8 +6,7 @@ package com.matheusgr.lunr.busca;
  */
 public class HistoricoBusca {
 
-	private BuscaSimples busca;
-	private BuscaAvancada buscaAvancada;
+	private Busca busca;
 	private String[] documentosIds;
 
 	/**
@@ -17,19 +16,12 @@ public class HistoricoBusca {
 	 * @param busca      Objeto de busca realizado.
 	 * @param documentos Resultado da pesquisa.
 	 */
-	public HistoricoBusca(BuscaSimples busca, String[] documentosIds) {
-		this.busca = busca;
+	public HistoricoBusca(Busca buscaInterface, String[] documentosIds) {
+		this.busca = buscaInterface;
 		this.documentosIds = documentosIds;
 	}
 
 	
-	
-	//tive que criar esse método para usa-lo no meu Buscarepository que por sua vez usara no busca service
-	
-	public HistoricoBusca(BuscaAvancada busca, String[] documentosIds) {
-		this.buscaAvancada = busca;
-		this.documentosIds = documentosIds;
-	}
 
 	/**
 	 * Depura uma busca onde cada linha representa um parâmetro de busca e cada

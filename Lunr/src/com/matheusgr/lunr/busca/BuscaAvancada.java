@@ -1,29 +1,29 @@
 package com.matheusgr.lunr.busca;
 
-
 import java.util.HashMap;
 import java.util.Map;
-
+import java.util.Set;
 
 import com.matheusgr.lunr.documento.Documento;
 import com.matheusgr.lunr.documento.DocumentoService;
 
-public class BuscaAvancada implements Busca{
+public class BuscaAvancada implements Busca {
 
 	private Map<String, String> mapa;
 
-	
-	// aqui eu crei um construtor igual o construtor de busca simples, só que ele recebe um MAPA como parametro.
+	// aqui eu crei um construtor igual o construtor de busca simples, só que ele
+	// recebe um MAPA como parametro.
 	public BuscaAvancada(Map<String, String> metaDados) {
-		(new ValidadorBusca()).valida(metaDados);;
+		(new ValidadorBusca()).valida(metaDados);
+		;
 		this.mapa.putAll(metaDados);
 
 	}
 
-	// criei o método de busca que será usado no controler 
+	// criei o método de busca que será usado no controler
 	public Map<Documento, Integer> busca(DocumentoService ds) {
-		
-		Map<Documento, Integer> respostaDocumento = new HashMap<>();		
+
+		Map<Documento, Integer> respostaDocumento = new HashMap<>();
 		for (String termo : this.mapa.values()) {
 			if (termo.isBlank()) {
 				continue;
@@ -35,5 +35,24 @@ public class BuscaAvancada implements Busca{
 		return respostaDocumento;
 	}
 
-}
+	// criar esse método
+	@Override
+	public String[][] descreveConsulta() {
 
+		String[][] resultado = new String[this.mapa.size()][];
+
+		Set<String> chaves = mapa.keySet();
+		for (String chave : chaves) {
+			if (chave != null) {
+
+				for (int i = 0; i < this.mapa.size(); i++) {
+
+					resultado[i] = new String[] { "TERMO " + (i + 1), this.mapa.get(chave) };
+
+				}
+			}
+
+		}
+		return resultado;
+	}
+}

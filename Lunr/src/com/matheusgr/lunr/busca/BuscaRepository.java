@@ -26,29 +26,18 @@ class BuscaRepository {
 		this.validador = new ValidadorBusca();
 	}
 
-	/**
-	 * Cadastra uma busca no histórico.
-	 * 
-	 * @param buscaSimples Operação de busca realizada.
-	 * @param documentos   Documentos resultantes dessa busca.
-	 */
-	public void adicionaBusca(BuscaSimples buscaSimples, DocumentoDTO[] documentos) {
+	
+	
+	
+	public void adicionaBusca(Busca busca, DocumentoDTO[] documentos) {
 		String[] ids = Stream.of(documentos)
 			.map(DocumentoDTO::getId)
 			.collect(Collectors.toList())
 			.toArray(new String[] {});
-		this.buscas.add(new HistoricoBusca(buscaSimples, ids));
-	}
-
-	
-	public void adicionaBusca(BuscaAvancada buscaAvancada, DocumentoDTO[] documentos) {
-		String[] ids = Stream.of(documentos)
-			.map(DocumentoDTO::getId)
-			.collect(Collectors.toList())
-			.toArray(new String[] {});
-		this.buscas.add(new HistoricoBusca(buscaAvancada, ids));
+		this.buscas.add(new HistoricoBusca(busca, ids));
 	
 	}
+	
 	
 	/**
 	 * Retorna um histórico de busca. O histórico é inserido na ordem em que as

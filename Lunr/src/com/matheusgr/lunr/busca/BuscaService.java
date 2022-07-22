@@ -36,29 +36,26 @@ public class BuscaService {
 		this.br = new BuscaRepository();
 	}
 
-	/**
-	 * Realiza uma operação de busca simples. Toda busca deve retornar um documento
-	 * e grau de relevância (de maior para menor).
-	 * 
-	 * @param buscaSimples Busca a ser realizada.
-	 * @return Resultado das buscas.
-	 */
-	public DocumentoDTO[] busca(BuscaSimples buscaSimples) {
-		Map<Documento, Integer> respostaDocumento = buscaSimples.busca(this.ds);
+	
+	
+	
+	
+	
+	
+	public DocumentoDTO[] busca(Busca busca) {
+		Map<Documento, Integer> respostaDocumento = busca.busca(this.ds);
 		DocumentoDTO[] documentos = ordena(respostaDocumento);
-		this.br.adicionaBusca(buscaSimples, documentos);
+		this.br.adicionaBusca(busca, documentos);
 		return documentos;
 	}
 	
 	
-	// tive que criar método nos buscarepository e no histórico busca 
-	public DocumentoDTO[] busca(BuscaAvancada buscaAvancada) {
-		Map<Documento, Integer> respostaDocumento = buscaAvancada.busca(this.ds);
-		DocumentoDTO[] documentos = ordena(respostaDocumento);
-		this.br.adicionaBusca(buscaAvancada, documentos);
-		return documentos;
-	}
 	
+	
+	
+	
+	
+
 
 	/*
 	 * Toda busca deve:
