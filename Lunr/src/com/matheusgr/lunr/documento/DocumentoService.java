@@ -131,5 +131,9 @@ public class DocumentoService {
 	public Set<Documento> busca(String termo) {
 		return this.dr.busca(termo);
 	}
+	
+	public Set<Documento> busca(String chave, String valor) {
+		return this.dr.busca(chave, valor);
+	}
 
 }

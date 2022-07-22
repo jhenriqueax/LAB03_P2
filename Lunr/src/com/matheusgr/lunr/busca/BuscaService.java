@@ -42,10 +42,10 @@ public class BuscaService {
 	
 	
 	
-	public DocumentoDTO[] busca(Busca busca) {
-		Map<Documento, Integer> respostaDocumento = busca.busca(this.ds);
+	public DocumentoDTO[] busca(Busca buscaInterface) {
+		Map<Documento, Integer> respostaDocumento = buscaInterface.busca(this.ds);
 		DocumentoDTO[] documentos = ordena(respostaDocumento);
-		this.br.adicionaBusca(busca, documentos);
+		this.br.adicionaBusca(buscaInterface, documentos);
 		return documentos;
 	}
 	

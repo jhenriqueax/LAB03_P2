@@ -15,8 +15,8 @@ public class BuscaAvancada implements Busca {
 	// recebe um MAPA como parametro.
 	public BuscaAvancada(Map<String, String> metaDados) {
 		(new ValidadorBusca()).valida(metaDados);
-		;
-		this.mapa.putAll(metaDados);
+
+		this.mapa = metaDados;
 
 	}
 
@@ -24,15 +24,31 @@ public class BuscaAvancada implements Busca {
 	public Map<Documento, Integer> busca(DocumentoService ds) {
 
 		Map<Documento, Integer> respostaDocumento = new HashMap<>();
-		for (String termo : this.mapa.values()) {
-			if (termo.isBlank()) {
-				continue;
-			}
-			for (Documento d : ds.busca(termo)) {
+		
+		Map<Documento, Integer> filtro = new HashMap<>();
+
+		for (String chave : this.mapa.keySet()) {
+
+			String valor = this.mapa.get(chave);
+
+			for (Documento d : ds.busca(chave, valor)) {
+
 				respostaDocumento.put(d, respostaDocumento.getOrDefault(d, 0) + 1);
+
+
 			}
 		}
-		return respostaDocumento;
+
+		for (Documento doc : respostaDocumento.keySet()) {
+			
+			int valor = respostaDocumento.get(doc);
+
+			if (valor == mapa.size()) {
+				filtro.put(doc, valor);
+			}
+
+		}
+		return filtro;
 	}
 
 	// criar esse método

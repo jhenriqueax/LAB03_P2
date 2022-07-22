@@ -1,13 +1,11 @@
 package com.matheusgr.lunr.documento;
 
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-
 
 /**
  * Repositório de documentos. O repositório pode ter opreações simples de busca,
@@ -92,6 +90,28 @@ class DocumentoRepository {
 					if (Arrays.stream(texto).anyMatch(termo::equals)) {
 						listaBuscar.add(documentos.get(chave));
 					}
+
+				}
+			}
+
+		}
+
+		return listaBuscar;
+	}
+
+	public Set<Documento> busca(String chaveParamentro, String valorParametro) {
+
+		Set<Documento> listaBuscar = new HashSet<>();
+
+		for (Documento doc : documentos.values()) {
+
+			Map<String, String> mapMeta = doc.getMetadados();
+
+			if (mapMeta.containsKey(chaveParamentro)) {
+
+				if (mapMeta.get(chaveParamentro).equals(valorParametro)) {
+
+					listaBuscar.add(doc);
 
 				}
 			}

@@ -82,15 +82,20 @@ class BuscaTest extends BaseTest {
 
 		Set<String> ids = Stream.of(busca).map(DocumentoDTO::getId).collect(Collectors.toSet());
 		Set<String> expectedIds = Stream.of(new String[] {TEXTO1_ID, TEXTO2_ID}).collect(Collectors.toSet());
+		
 		assertEquals(expectedIds, ids);
 	}
 	
 	@Test
 	void testBuscaAvancadaDoisMetadados() {
 		Map<String, String> metadadosBuscados = new HashMap<>();
+		
 		metadadosBuscados.put("TIPO", "txt");
 		metadadosBuscados.put("LINHAS", "1");
+		
 		DocumentoDTO[] busca = this.buscaController.busca(metadadosBuscados);
+		
+		
 		assertEquals(1, busca.length, "Todos os documentos de texto");
 		assertEquals(TEXTO1_ID, busca[0].getId());
 	}

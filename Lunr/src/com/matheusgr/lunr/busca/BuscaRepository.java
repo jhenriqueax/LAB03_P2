@@ -29,12 +29,12 @@ class BuscaRepository {
 	
 	
 	
-	public void adicionaBusca(Busca busca, DocumentoDTO[] documentos) {
+	public void adicionaBusca(Busca buscaInterface, DocumentoDTO[] documentos) {
 		String[] ids = Stream.of(documentos)
 			.map(DocumentoDTO::getId)
 			.collect(Collectors.toList())
 			.toArray(new String[] {});
-		this.buscas.add(new HistoricoBusca(busca, ids));
+		this.buscas.add(new HistoricoBusca(buscaInterface, ids));
 	
 	}
 	
