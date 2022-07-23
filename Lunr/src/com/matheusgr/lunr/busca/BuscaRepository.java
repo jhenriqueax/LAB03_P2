@@ -27,8 +27,13 @@ class BuscaRepository {
 	}
 
 	
-	
-	
+	/**
+	 * 
+	 * método que adiciona busca ao histórico de buscas.
+	 * 
+	 * @param buscaInterface interface de busca
+	 * @param documentos
+	 */
 	public void adicionaBusca(Busca buscaInterface, DocumentoDTO[] documentos) {
 		String[] ids = Stream.of(documentos)
 			.map(DocumentoDTO::getId)

@@ -56,10 +56,7 @@ public class BuscaController {
 	 *                  retornados.
 	 * @return Array com DocumentoDTO. Não há ordenação definida.
 	 */
-	
-	
-	// fiz igual busca simples, implementando o busca avancaçada e passando as informaçoes para o service
-	public DocumentoDTO[] busca(Map<String, String> metadados) { // AQUIIIIIIIIIIIIIIIIIIIII
+	public DocumentoDTO[] busca(Map<String, String> metadados) { 
 		this.bv.valida(metadados);
 		return this.bs.busca(new BuscaAvancada(metadados));
 	}

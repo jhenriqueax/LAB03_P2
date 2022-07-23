@@ -132,6 +132,13 @@ public class DocumentoService {
 		return this.dr.busca(termo);
 	}
 	
+	/**
+	 * Realiza uma busca avançada por documentos que possuem determinado termo. A
+	 * busca implementada pelo DocumentoService não deve ser complexa.
+	 * 
+	 * @param chave e valor do mapa passado pelo busca avançada
+	 * @return Documentos que possuem o termo.
+	 */
 	public Set<Documento> busca(String chave, String valor) {
 		return this.dr.busca(chave, valor);
 	}

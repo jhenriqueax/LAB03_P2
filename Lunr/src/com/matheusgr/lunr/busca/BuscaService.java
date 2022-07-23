@@ -35,6 +35,7 @@ public class BuscaService {
 		this.ds = ds;
 		this.br = new BuscaRepository();
 	}
+	
 
 	public DocumentoDTO[] busca(Busca buscaInterface) {
 		Map<Documento, Integer> respostaDocumento = buscaInterface.busca(this.ds);

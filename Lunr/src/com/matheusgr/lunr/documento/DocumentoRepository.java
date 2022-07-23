@@ -98,24 +98,27 @@ class DocumentoRepository {
 
 		return listaBuscar;
 	}
-
+	/**
+	 * 
+	 * Método que recebe chave e valor de um mapa como paramétro e checa se 
+	 * o mapa documentos possue os metadados com o a chave e valor passados 
+	 * no parametro
+	 * 
+	 * @param chaveParamentro chave passada como parámetro
+	 * @param valorParametro valor passado como parámetro
+	 * @return lista do tipo ser com os documentos que possuem a chave e o valor
+	 * do paramétro
+	 */
 	public Set<Documento> busca(String chaveParamentro, String valorParametro) {
-
 		Set<Documento> listaBuscar = new HashSet<>();
 
 		for (Documento doc : documentos.values()) {
-
 			Map<String, String> mapMeta = doc.getMetadados();
-
 			if (mapMeta.containsKey(chaveParamentro)) {
-
 				if (mapMeta.get(chaveParamentro).equals(valorParametro)) {
-
 					listaBuscar.add(doc);
-
 				}
 			}
-
 		}
 
 		return listaBuscar;
