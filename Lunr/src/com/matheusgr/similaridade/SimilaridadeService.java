@@ -40,14 +40,36 @@ public class SimilaridadeService {
 	 *         semelhança entre os documentos.
 	 */
 	public double similaridade(String docId1, String docId2) {
-		this.documentoService.recuperaDocumento(docId1);
-		// PEGA DOCUMENTO 1
-		// PEGA DOCUMENTO 2
-		// COLOCA TERMOS DO DOCUMENTO 1 EM UM CONJUNTO
-		// COLOCA TERMOS DO DOCUMENTO 2 EM OUTRO CONJUNTO
-		// A SIMILARIDADE É DETERMINADA PELO...
-		// --> (TAMANHO DA INTERSEÇÃO) / (TAMANHO DA UNIÃO DOS CONJUNTOS)
-		throw new UnsupportedOperationException();
+		
+		String[] termos1 = this.documentoService.recuperaDocumento(docId1).get().getTexto();
+		String[] termos2 = this.documentoService.recuperaDocumento(docId1).get().getTexto();
+		
+		int intersecao = 0;
+
+	    for(int i = 0, j = 0; i < termos1.length && j < termos2.length;){
+	        int res = termos1[i].compareTo(termos2[j]);
+	        if(res == 0){
+	            intersecao++;
+	            i++;
+	            j++;
+	        }else if(res < 0){
+	            i++;
+	        }else{
+	            j++;
+	        }
+	    }
+	   
+		int jaccard = intersecao / (termos1.length + termos2.length);
+		
+		
+		return jaccard;
+		
 	}
 
 }
+
+
+
+
+
+

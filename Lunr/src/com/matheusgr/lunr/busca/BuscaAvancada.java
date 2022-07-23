@@ -24,7 +24,7 @@ public class BuscaAvancada implements Busca {
 	public Map<Documento, Integer> busca(DocumentoService ds) {
 
 		Map<Documento, Integer> respostaDocumento = new HashMap<>();
-		
+
 		Map<Documento, Integer> filtro = new HashMap<>();
 
 		for (String chave : this.mapa.keySet()) {
@@ -35,12 +35,11 @@ public class BuscaAvancada implements Busca {
 
 				respostaDocumento.put(d, respostaDocumento.getOrDefault(d, 0) + 1);
 
-
 			}
 		}
 
 		for (Documento doc : respostaDocumento.keySet()) {
-			
+
 			int valor = respostaDocumento.get(doc);
 
 			if (valor == mapa.size()) {

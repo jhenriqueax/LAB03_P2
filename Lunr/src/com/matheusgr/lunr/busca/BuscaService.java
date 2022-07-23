@@ -36,39 +36,20 @@ public class BuscaService {
 		this.br = new BuscaRepository();
 	}
 
-	
-	
-	
-	
-	
-	
 	public DocumentoDTO[] busca(Busca buscaInterface) {
 		Map<Documento, Integer> respostaDocumento = buscaInterface.busca(this.ds);
 		DocumentoDTO[] documentos = ordena(respostaDocumento);
 		this.br.adicionaBusca(buscaInterface, documentos);
 		return documentos;
 	}
-	
-	
-	
-	
-	
-	
-	
-
 
 	/*
-	 * Toda busca deve:
-	 * - ordenar de acordo com o valor de relevância (valor no mapa)
-	 * - retornar até 5 elementos (ou menos)
+	 * Toda busca deve: - ordenar de acordo com o valor de relevância (valor no
+	 * mapa) - retornar até 5 elementos (ou menos)
 	 */
 	private DocumentoDTO[] ordena(Map<Documento, Integer> respostaDocumento) {
-		return respostaDocumento.entrySet().stream()
-				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-				.limit(5)
-				.map(Entry::getKey)
-				.map(DocumentoDTO::new)
-				.collect(Collectors.toList())
+		return respostaDocumento.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+				.limit(5).map(Entry::getKey).map(DocumentoDTO::new).collect(Collectors.toList())
 				.toArray(new DocumentoDTO[] {});
 	}
 
