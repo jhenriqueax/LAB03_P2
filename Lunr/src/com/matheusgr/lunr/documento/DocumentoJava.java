@@ -99,5 +99,10 @@ class DocumentoJava implements Documento {
 		metadados2.put("AUTHOR", "" + (this.original.indexOf("@author") != -1 ? "TRUE" : ""));
 		return metadados2;
 	}
+	
+	@Override
+	public String getOriginasl() {
+		return this.original;
+	}
 
 }

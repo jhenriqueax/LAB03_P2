@@ -117,4 +117,9 @@ class DocumentoHtml implements Documento {
 		metadados2.put(HEAD_METADADO, meta);
 		return metadados2;
 	}
+
+	@Override
+	public String getOriginasl() {
+		return this.original;
+	}
 }

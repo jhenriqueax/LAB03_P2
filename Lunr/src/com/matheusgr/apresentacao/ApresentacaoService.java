@@ -1,5 +1,8 @@
 package com.matheusgr.apresentacao;
 
+import java.util.Optional;
+
+import com.matheusgr.lunr.documento.Documento;
 import com.matheusgr.lunr.documento.DocumentoService;
 
 /**
@@ -29,8 +32,16 @@ public class ApresentacaoService {
 	 */
 	public String apresenta(String docId, String tipoApresentacao) {
 		
-		this.documentoService.recuperaDocumento(docId);
-		//TO DO
+		Optional<Documento> doc = this.documentoService.recuperaDocumento(docId);
+		
+		String texto = doc.get().getOriginasl();
+		
+		
+		if(tipoApresentacao.equals("primeirasNlinhas")) {
+			return new primeirasNLinhas(texto, 2).imprime();
+		}
+	
+		
 		return "";
 		
 	}

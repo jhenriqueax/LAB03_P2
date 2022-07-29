@@ -84,5 +84,10 @@ class DocumentoTexto implements Documento {
 		this.metadados.put("TIPO", "" + "txt");
 		return this.metadados;
 	}
+	
+	@Override
+	public String getOriginasl() {
+		return this.original;
+	}
 
 }

@@ -1,9 +1,9 @@
 package com.matheusgr.apresentacao;
 
-public class caixaAlta implements Imprimir {
+public class caixaAlta implements representacao {
 
 	@Override
-	public String imprime(String docId) {
+	public String imprime() {
 		// TODO Auto-generated method stub
 		return null;
 	}
