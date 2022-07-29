@@ -1,5 +1,6 @@
 package com.matheusgr.lunr.busca;
 
+
 import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -36,6 +37,9 @@ public class BuscaService {
 		this.br = new BuscaRepository();
 	}
 	
+	
+	
+	
 
 	public DocumentoDTO[] busca(Busca buscaInterface) {
 		Map<Documento, Integer> respostaDocumento = buscaInterface.busca(this.ds);
@@ -44,6 +48,12 @@ public class BuscaService {
 		return documentos;
 	}
 
+	
+	
+	
+	
+	
+	
 	/*
 	 * Toda busca deve: - ordenar de acordo com o valor de relevância (valor no
 	 * mapa) - retornar até 5 elementos (ou menos)
