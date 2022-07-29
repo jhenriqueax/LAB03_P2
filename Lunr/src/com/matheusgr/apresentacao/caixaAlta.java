@@ -1,11 +1,16 @@
 package com.matheusgr.apresentacao;
 
-public class caixaAlta implements representacao {
+public class caixaAlta implements representacaoInterface {
+	
+	private String texto;
+
+	public caixaAlta(String texto) {
+		this.texto = texto;
+	}
 
 	@Override
-	public String imprime() {
-		// TODO Auto-generated method stub
-		return null;
+	public String representacao() {
+		return texto.toUpperCase();
 	}
 
 }

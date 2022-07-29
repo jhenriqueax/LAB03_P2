@@ -34,15 +34,22 @@ public class ApresentacaoService {
 		
 		Optional<Documento> doc = this.documentoService.recuperaDocumento(docId);
 		
+		String retorno = "";
+		
 		String texto = doc.get().getOriginasl();
 		
-		
-		if(tipoApresentacao.equals("primeirasNlinhas")) {
-			return new primeirasNLinhas(texto, 2).imprime();
+		if(tipoApresentacao.equals("primeirasNLinhas")) {
+			retorno = new primeirasNLinhas(texto, 2).representacao();
 		}
-	
+		if(tipoApresentacao.equals("ultimasNLinhas")) {
+			retorno = new ultimasNLinhas(texto, 2).representacao();
+		}
+		if(tipoApresentacao.equals("caixaAlta")) {
+			retorno = new caixaAlta(texto).representacao();
+		}
 		
-		return "";
+		
+		return retorno;
 		
 	}
 
